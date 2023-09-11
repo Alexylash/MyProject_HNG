@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', function () {
+
+document.addEventListener("DOMContentLoaded", function() {
     // Function to get the current day of the week
-    function getCurrentDayOfWeek() {
-        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        const currentDate = new Date();
-        const dayOfWeek = daysOfWeek[currentDate.getUTCDay()];
-        return dayOfWeek;
+    function getCurrentDayOfTheWeek() {
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const today = new Date();
+        return days[today.getDay()];
     }
 
     // Function to get the current UTC time in milliseconds
@@ -12,12 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return Date.now();
     }
 
-    // Update the elements with dynamic data
-    const slackNameElement = document.querySelector('[data-testid="slackUserName"]');
-    const currentDayElement = document.querySelector('[data-testid="currentDayOfTheWeek"]');
-    const currentUTCTimeElement = document.querySelector('[data-testid="currentUTCTime"]');
-
-    slackNameElement.textContent = "Opillo 1000";
-    currentDayElement.textContent = getCurrentDayOfWeek();
-    currentUTCTimeElement.textContent = `Current UTC Time: ${getCurrentUTCTime()} milliseconds`;
+    // Update the DOM elements with the data
+    document.querySelector('[data-testid="currentDayOfTheWeek"]').textContent = `Current Day: ${getCurrentDayOfTheWeek()}`;
+    document.querySelector('[data-testid="currentUTCTime"]').textContent = `Current UTC Time (ms): ${getCurrentUTCTime()}`;
 });
